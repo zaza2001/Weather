@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Weather Dashboard</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+       <header class="app-header">
+           <h1>Weather Dashboard</h1>
+       </header>
+
+
+       <main>
+           <!-- These elements will be controlled by JS later -->
+           <div id="loader" style="display: none;">Loading...</div>
+           <div id="error-container" style="display: none;"></div>
+
+
+           <div id="weather-content">
+               <!-- Current Weather & Search Card -->
+               <section class="card">
+                   <form id="search-form">
+                       <input id="city-input" type="text" placeholder="Enter city name...">
+                       <button type="submit" class="btn">Search</button>
+                   </form>
+                   <!-- Hardcoded placeholder data for styling -->
+                   <div id="current-weather-details">
+                       <h1>New York</h1>
+                       <p class="muted-text">Saturday, August 16, 2025</p>
+                       <div class="current-main">
+                           <div class="current-temp">25°C</div>
+                           <div class="current-condition">Sunny</div>
+                       </div>
+                       <div class="current-details">
+                           <div>Humidity: 65%</div>
+                           <div>Wind: 12 km/h</div>
+                       </div>
+                   </div>
+               </section>
+
+
+               <!-- Popular Cities -->
+               <section>
+                   <h3>Popular Cities</h3>
+                   <div id="popular-cities-buttons" class="btn-group">
+                       <!-- Hardcode a few buttons for styling -->
+                       <button class="btn btn-outline active">New York</button>
+                       <button class="btn btn-outline">London</button>
+                       <button class="btn btn-outline">Tokyo</button>
+                   </div>
+               </section>
+
+
+               <!-- 5-Day Forecast -->
+               <section>
+                   <h2>5-Day Forecast</h2>
+                   <div id="forecast-cards-container" class="grid-5">
+                       <!-- Hardcode one card for styling -->
+                       <div class="card forecast-card">
+                           <p class="day">Today</p>
+                           <p class="condition">Sunny</p>
+                           <p class="temp-high">27°</p>
+                           <p class="temp-low muted-text">18°</p>
+                       </div>
+                       <!-- You can copy-paste this card 4 more times -->
+                   </div>
+               </section>
+              
+                <!-- Additional Details -->
+               <section>
+                   <h3>Additional Details</h3>
+                   <div id="additional-details-container" class="grid-4">
+                       <div class="card detail-card">
+                           <p class="muted-text">Visibility</p>
+                           <p>10 km</p>
+                       </div>
+                       <div class="card detail-card">
+                           <p class="muted-text">UV Index</p>
+                           <p>6</p>
+                       </div>
+                   </div>
+               </section>
+           </div>
+       </main>
+   </div>
+   <script src="script.js"></script>
+</body>
+</html>
