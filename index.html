@@ -5,6 +5,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Weather Dashboard</title>
    <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
    <div class="container">
@@ -23,7 +26,7 @@
                <section class="cardd">
                    <form id="search-form">
                        <input id="city-input" type="text" placeholder="Enter city name...">
-                       <button type="submit" class="searchBtn"><img src="./Img/search.svg" alt="search icon" width="12px" height="12px" style="margin-right: 5px;">Search</button>
+                       <button type="submit" class="searchBtn"><img src="./Img/search.svg" alt="search icon" width="14px" height="14px" style="margin-right: 5px;">Search</button>
                    </form>
                    <!-- Hardcoded placeholder data for styling -->
                    <div id="current-weather-details">
@@ -31,12 +34,12 @@
                        <p class="muted-text">Saturday, August 16, 2025</p>
                        <div class="current-main">
                            <div class="current-temp">
-                            <img src="./Img/Vector.svg" class="vector" alt="Cloud"><span>25°C</span></div>
+                            <img src="./Img/party-cloud.svg" class="vector" alt="Party Cloud"><span>25°C</span></div>
                            <!-- <div class="current-condition">Sunny</div> -->
                        </div>
                        <div class="current-details">
                 <div class="detail">
-                    <img src="./Img/water.svg" alt="Humidity" class="humidity">
+                    <img src="./Img/humidity.svg" alt="Humidity" class="humidity">
                 <div>
                      <p>Humidity</p>
                      <p>50%</p>
@@ -44,7 +47,7 @@
   </div>
 
         <div class="details">
-            <img src="./Img/wind.svg" alt="Wind" class="wind">
+            <img src="./Img/wind-speed.svg" alt="Wind" class="wind">
         <div>
             <p>Wind Speed</p>
             <p>4 km/h</p>
@@ -79,25 +82,25 @@
                        <!-- Hardcode one card for styling -->
                        <div class="card forecast-card">
                            <p class="day">Today</p>
-                           <img class="weathers" src="./Img/lightrain.svg" alt="lightrain">
+                           <img class="weathers" src="./Img/light-rain.svg" alt="light rain">
                            <p class="temp-high">33°</p>
                            <p class="temp-low muted-text">18°</p>
                        </div>
                        <div class="card forecast-card">
                            <p class="day">Friday</p>
-                           <img class="weathers" src="./Img/sunny.svg" alt="sunny">
+                           <img class="weathers" src="./Img/sunny-clear.svg" alt="sunny">
                            <p class="temp-high">27°</p>
                            <p class="temp-low muted-text">18°</p>
                        </div>
                        <div class="card forecast-card">
                            <p class="day">Saturday</p>
-                           <img class="weathers" src="./Img/partycloud.svg" alt="partycloud">
+                           <img class="weathers" src="./Img/party-cloud.svg" alt="party cloud">
                            <p class="temp-high">27°</p>
                            <p class="temp-low muted-text">18°</p>
                        </div>
                        <div class="card forecast-card">
                            <p class="day">Sunday</p>
-                           <img class="weathers" src="./Img/lightrain.svg" alt="lightrain">
+                           <img class="weathers" src="./Img/light-rain.svg" alt="light rain">
                            <p class="temp-high">27°</p>
                            <p class="temp-low muted-text">18°</p>
                        </div>
