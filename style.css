@@ -58,7 +58,7 @@ border-radius: 6.75px;
 background-color: #F3F3F5;
 outline: none;
 border: 1px solid var(--border);
-padding-left: 10px;
+padding-left: 10px; 
 }
 #search-form {
 display: flex;
