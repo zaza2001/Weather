@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="app-header">
+            <!-- <h1>Weather Dashboard</h1> -->
+        </header>
+
+        <main>
+            <!-- These elements will be controlled by JS later -->
+            <div id="loader" style="display: none;">Loading...</div>
+            <div id="error-container" style="display: none;"></div>
+
+
+            <div id="weather-content">
+                <!-- Current Weather & Search Card -->
+                <section class="cardd">
+                    <form id="search-form">
+                        <input id="city-input" type="text" placeholder="Enter city name...">
+                        <button type="submit" class="searchBtn"><img src="./Img/search.svg"
+                                alt="search icon">Search</button>
+                    </form>
+                    <!-- Hardcoded placeholder data for styling -->
+                    <div id="current-weather-details">
+                        <h1 class="headCity">New York, United States of America</h1>
+                        <p class="muted-text">Saturday, August 16, 2025</p>
+                        <div class="current-main">
+                            <div class="current-temp">
+                                <img src="./Img/party-cloud.svg" class="vector" alt="Party Cloud"><span>25°C</span>
+                            </div>
+                            <!-- <div class="current-condition">Sunny</div> -->
+                        </div>
+                        <div class="current-details">
+                            <div class="detail">
+                                <img src="./Img/humidity.svg" alt="Humidity" class="humidity">
+                                <div>
+                                    <p>Humidity</p>
+                                    <p>50%</p>
+                                </div>
+                            </div>
+
+                            <div class="details">
+                                <img src="./Img/wind-speed.svg" alt="Wind" class="wind">
+                                <div>
+                                    <p>Wind Speed</p>
+                                    <p>4 km/h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Popular Cities -->
+                <section>
+                    <h3 class="popularcity">Popular Cities</h3>
+                    <div id="popular-cities-buttons" class="btn-group">
+                        <!-- Hardcode a few buttons for styling -->
+                        <button class="btn btn-outline active">New York</button>
+                        <button class="btn btn-outline">London</button>
+                        <button class="btn btn-outline">Tokyo</button>
+                        <button class="btn btn-outline">Paris</button>
+                        <button class="btn btn-outline">Sydney</button>
+                        <button class="btn btn-outline">Los Angeles</button>
+                        <button class="btn btn-outline">Dubai</button>
+                        <button class="btn btn-outline">Singapore</button>
+                        <button class="btn btn-outline">Moscow</button>
+                        <button class="btn btn-outline">Berlin</button>
+                    </div>
+                </section>
+
+
+                <!-- 5-Day Forecast -->
+                <section>
+                    <h2 class="fiveday">5-Day Forecast</h2>
+                    <div id="forecast-cards-container" class="grid-5">
+                        <!-- Hardcode one card for styling -->
+                        <div class="card forecast-card">
+                            <p class="day">Today</p>
+                            <img class="weathers" src="./Img/light-rain.svg" alt="light rain">
+                            <p class="temp-high">33°</p>
+                            <p class="temp-low muted-text">18°</p>
+                        </div>
+                        <div class="card forecast-card">
+                            <p class="day">Friday</p>
+                            <img class="weathers" src="./Img/sunny-clear.svg" alt="sunny">
+                            <p class="temp-high">27°</p>
+                            <p class="temp-low muted-text">18°</p>
+                        </div>
+                        <div class="card forecast-card">
+                            <p class="day">Saturday</p>
+                            <img class="weathers" src="./Img/party-cloud.svg" alt="party cloud">
+                            <p class="temp-high">27°</p>
+                            <p class="temp-low muted-text">18°</p>
+                        </div>
+                        <div class="card forecast-card">
+                            <p class="day">Sunday</p>
+                            <img class="weathers" src="./Img/light-rain.svg" alt="light rain">
+                            <p class="temp-high">27°</p>
+                            <p class="temp-low muted-text">18°</p>
+                        </div>
+                        <div class="card forecast-card">
+                            <p class="day">Monday</p>
+                            <img class="weathers" src="./Img/fog.svg" alt="fog">
+                            <p class="temp-high">27°</p>
+                            <p class="temp-low muted-text">18°</p>
+                        </div>
+                        <!-- You can copy-paste this card 4 more times -->
+                    </div>
+                </section>
+
+                <!-- Additional Details -->
+                <section>
+                    <h3 class="additionaldet">Additional Details</h3>
+                    <div id="additional-details-container" class="grid-4">
+                        <div class="card detail-card">
+                            <p class="muted-text">Visibility</p>
+                            <p class="muted-text1">16 km</p>
+                        </div>
+                        <div class="card detail-card">
+                            <p class="muted-text">UV Index</p>
+                            <p class="muted-text1">5.2</p>
+                        </div>
+                        <div class="card detail-card">
+                            <p class="muted-text">Condition</p>
+                            <p class="muted-text1">Party Cloud</p>
+                        </div>
+                        <div class="card detail-card">
+                            <p class="muted-text">Data Source</p>
+                            <p class="muted-text1">Live API</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
