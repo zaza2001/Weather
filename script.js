@@ -1,6 +1,18 @@
 const API_KEY = "1edf98459d3a43caaed173225252708";
 const BASE_URL = "https://api.weatherapi.com/v1";
 let currentCity = "Tbilisi";
+const searhForm = document.getElementById("search-form"); 
+const cityInput = document.getElementById("city-input");
+
+searhForm.addEventListener("click", () => { // არაა დასრულებული
+    const newCity = cityInput.value.trim();
+    if (newCity) {
+        currentCity = newCity;
+        fetchAndRenderWeather(currentCity);
+    }
+});
+
+
 async function fetchAndRenderWeather(city) {
     try {
         const response = await fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=5`);
@@ -14,7 +26,8 @@ async function fetchAndRenderWeather(city) {
 
 
         renderCurrentWeather(data);
-        renderAditional(data)
+        renderAditional(data);
+        renderFiveDayForecast(data);
 
     } catch (error) {
         console.error("An error occurred:", error);
@@ -28,43 +41,46 @@ function renderCurrentWeather(data) {
     const wind = Math.round(data.current.wind_kph);
     const code = data.current.condition.code;
     const imgCode = conditionCodeToIconMap[code];
+    const alternative = data.current.condition.text;
 
     const html = `
-       <div id="current-weather-details">
-                        <h1 class="headCity" id="headCity">${city}, ${country}</h1>
-                        <p class="muted-text">${new Date().toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</p>
-                        <div class="current-main">
-                            <div class="current-temp">
-                                <img src="./Img/${imgCode}" class="vector" alt="party cloud"><span>${temp}°C</span>
-                            </div>
-                        </div>
-                        <div class="current-details">
-                            <div class="detail">
-                                <img src="./Img/humidity.svg" alt="Humidity" class="humidity">
-                                <div>
-                                    <p>Humidity</p>
-                                    <p>${humidity}%</p>
+                            <div id="current-weather-details">
+                            <h1 class="headCity" id="headCity">${city}, ${country}</h1>
+                            <p class="muted-text">${new Date().toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</p>
+                            <div class="current-main">
+                                <div class="current-temp">
+                                    <img src="./Img/${imgCode}" class="vector" alt="${alternative}"><span>${temp}°C</span>
                                 </div>
                             </div>
+                            <div class="current-details">
+                                <div class="detail">
+                                    <img src="./Img/humidity.svg" alt="Humidity" class="humidity">
+                                    <div>
+                                        <p>Humidity</p>
+                                        <p>${humidity}%</p>
+                                    </div>
+                                </div>
 
-                            <div class="details">
-                                <img src="./Img/wind-speed.svg" alt="Wind" class="wind">
-                                <div>
-                                    <p>Wind Speed</p>
-                                    <p>${wind} km/h</p>
+                                <div class="details">
+                                    <img src="./Img/wind-speed.svg" alt="Wind" class="wind">
+                                    <div>
+                                        <p>Wind Speed</p>
+                                        <p>${wind} km/h</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-   `;
+                            </div>
+    `;
     const currentWeatherDetails = document.getElementById('current-weather-details');
     currentWeatherDetails.innerHTML = html;
 }
 function init() {
     fetchAndRenderWeather(currentCity);
 }
+
+
 init();
-const conditionCodeToTextMap = {
+const conditionCodeToTextMap = { // -----------აკლია ამინდის Condition_ები-------------
     1000: 'sunny', 1003: 'partly cloudy', 1006: 'cloudy', 1009: 'cloudy',
     1030: 'fog', 1063: 'rain', 1066: 'snow', 1069: 'sleet', 1072: 'drizzle',
     1087: 'thunderstorm', 1114: 'heavy snow', 1117: 'heavy snow', 1135: 'fog',
@@ -98,24 +114,52 @@ function renderAditional(data) {
     const uv = data.current.uv;
     const details = data.current.condition.text;
     const aditonal = `
-    <div id="additional-details-container" class="grid-4">
-                        <div class="card detail-card">
-                            <p class="muted-text">Visibility</p>
-                            <p class="muted-text1">${km}km</p>
+        <div id="additional-details-container" class="grid-4">
+                            <div class="card detail-card">
+                                <p class="muted-text">Visibility</p>
+                                <p class="muted-text1">${km}km</p>
+                            </div>
+                            <div class="card detail-card">
+                                <p class="muted-text">UV Index</p>
+                                <p class="muted-text1">${uv}</p>
+                            </div>
+                            <div class="card detail-card">
+                                <p class="muted-text">Condition</p>
+                                <p class="muted-text1">${details}</p>
+                            </div>
+                            <div class="card detail-card">
+                                <p class="muted-text">Data Source</p>
+                                <p class="muted-text1">Live API</p>
+                            </div>
                         </div>
-                        <div class="card detail-card">
-                            <p class="muted-text">UV Index</p>
-                            <p class="muted-text1">${uv}</p>
-                        </div>
-                        <div class="card detail-card">
-                            <p class="muted-text">Condition</p>
-                            <p class="muted-text1">${details}</p>
-                        </div>
-                        <div class="card detail-card">
-                            <p class="muted-text">Data Source</p>
-                            <p class="muted-text1">Live API</p>
-                        </div>
-                    </div>
-    `;
+        `;
     aditionalDetail.innerHTML = aditonal;
 }
+function renderFiveDayForecast(data) {
+    const forecastContainer = document.getElementById("forecast-cards-container");
+    forecastContainer.innerHTML = "";
+    const forecastDays = data.forecast.forecastday;
+    forecastDays.forEach(forecast => {
+        const date = forecast.date;
+        const maxTemp = forecast.day.maxtemp_c;
+        const minTemp = forecast.day.mintemp_c;
+        const code = forecast.day.condition.code;
+        const imgCode = conditionCodeToIconMap[code];
+        const altText = data.current.condition.text;
+        const fiveDayForecast = `
+            
+                            <!-- Hardcode one card for styling -->
+                            <div class="card forecast-card">
+                                <p class="day">${date}</p>
+                                <img class="weathers" src="./Img/${imgCode}" alt="${altText}">
+                                <p class="temp-high">${maxTemp}°</p>
+                                <p class="temp-low muted-text">${minTemp}°</p>
+                            </div>
+            `
+
+        forecastContainer.innerHTML += fiveDayForecast;
+
+
+    })
+}
+
