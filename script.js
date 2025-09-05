@@ -1,17 +1,24 @@
 const API_KEY = "1edf98459d3a43caaed173225252708";
 const BASE_URL = "https://api.weatherapi.com/v1";
 let currentCity = "Tbilisi";
-const searhForm = document.getElementById("search-form"); 
+const searhForm = document.getElementById("search-form");
 const cityInput = document.getElementById("city-input");
-
-searhForm.addEventListener("click", () => { // არაა დასრულებული
+const cityButtons = document.querySelectorAll("#popular-cities-buttons .btn");
+searhForm.addEventListener("click", (e) => {
+    e.preventDefault();
     const newCity = cityInput.value.trim();
     if (newCity) {
         currentCity = newCity;
         fetchAndRenderWeather(currentCity);
     }
 });
-
+cityButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const newCity = button.textContent;
+        currentCity = newCity;
+        fetchAndRenderWeather(currentCity);
+    });
+});
 
 async function fetchAndRenderWeather(city) {
     try {
