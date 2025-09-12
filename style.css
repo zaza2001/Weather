@@ -65,6 +65,11 @@
   outline: none;
   border: 1px solid var(--border);
   padding-left: 10px;
+  box-shadow: #1f2937;
+}
+#city-input:focus{
+    border-color: #000; 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); 
 }
 
 #search-form {
@@ -98,7 +103,7 @@
 }
 
 .headCity {
-  width: 221.55px;
+  width: 250.55px;
   max-height: 17px;
   margin: 49px auto 11px auto;
   font-family: "Inter";
@@ -109,7 +114,6 @@
   letter-spacing: 0%;
   text-align: center;
   vertical-align: middle;
-
   color: var(--foreground);
 }
 
@@ -284,12 +288,19 @@
   vertical-align: middle;
 }
 
-.btn.active {
+.btn:active {
   background: #030213;
   color: #ffffff;
 
 }
-
+.btn:hover {
+  background: #e9ebef;
+  color:black;
+}
+.btn:focus{
+  background: #030213;
+  color: white;
+}
 .fiveday {
   width: 95px;
   height: 17px;
@@ -392,7 +403,7 @@
   display: flex;
   gap: 14px;
   margin-top: 15px;
-  margin-left: 8px;
+  margin-left: 9px;
   flex-wrap: wrap;
 }
 

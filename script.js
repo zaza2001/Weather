@@ -1,10 +1,10 @@
 const API_KEY = "1edf98459d3a43caaed173225252708";
 const BASE_URL = "https://api.weatherapi.com/v1";
 let currentCity = "Tbilisi";
-const searhForm = document.getElementById("search-form");
+const searchForm = document.getElementById("search-form");
 const cityInput = document.getElementById("city-input");
 const cityButtons = document.querySelectorAll("#popular-cities-buttons .btn");
-searhForm.addEventListener("click", (e) => {
+searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const newCity = cityInput.value.trim();
     if (newCity) {
@@ -87,7 +87,7 @@ function init() {
 
 
 init();
-const conditionCodeToTextMap = { // -----------აკლია ამინდის Condition_ები-------------
+const conditionCodeToTextMap = {
     1000: 'sunny', 1003: 'partly cloudy', 1006: 'cloudy', 1009: 'cloudy',
     1030: 'fog', 1063: 'rain', 1066: 'snow', 1069: 'sleet', 1072: 'drizzle',
     1087: 'thunderstorm', 1114: 'heavy snow', 1117: 'heavy snow', 1135: 'fog',
@@ -100,8 +100,10 @@ const conditionCodeToTextMap = { // -----------აკლია ამინდ�
     1255: 'snow', 1258: 'heavy snow', 1261: 'hail', 1264: 'hail',
     1273: 'thunderstorm', 1276: 'thunderstorm', 1279: 'thunderstorm', 1282: 'thunderstorm',
 };
+
+
 const conditionCodeToIconMap = {
-    1000: 'sunny-clear.svg', 1003: 'partly-cloudy.svg', 1006: 'cloudy.svg', 1009: 'cloudy.svg',
+    1000: 'sunny-clear.svg', 1003: 'party-cloud.svg', 1006: 'cloudy.svg', 1009: 'cloudy.svg',
     1030: 'fog.svg', 1063: 'light-rain.svg', 1066: 'heavy-snow.svg', 1069: 'sleet.svg', 1072: 'drizzle.svg',
     1087: 'thunderstorm.svg', 1114: 'heavy-snow.svg', 1117: 'heavy-snow.svg', 1135: 'fog.svg',
     1147: 'fog.svg', 1150: 'drizzle.svg', 1153: 'drizzle.svg', 1168: 'drizzle.svg', 1171: 'drizzle.svg',
@@ -142,23 +144,28 @@ function renderAditional(data) {
         `;
     aditionalDetail.innerHTML = aditonal;
 }
+function getDayName(dateString) {
+   const date = new Date(dateString);
+   return date.toLocaleDateString("en-US", { weekday: 'long' });
+}
 function renderFiveDayForecast(data) {
     const forecastContainer = document.getElementById("forecast-cards-container");
     forecastContainer.innerHTML = "";
     const forecastDays = data.forecast.forecastday;
-    forecastDays.forEach(forecast => {
-        const date = forecast.date;
+    forecastDays.forEach((forecast, index) => {
+        const dayName = (index === 0) ? 'Today' : getDayName(forecast.date);
         const maxTemp = forecast.day.maxtemp_c;
         const minTemp = forecast.day.mintemp_c;
         const code = forecast.day.condition.code;
         const imgCode = conditionCodeToIconMap[code];
-        const altText = data.current.condition.text;
+        const conditionText = conditionCodeToTextMap[code];
         const fiveDayForecast = `
+
             
                             <!-- Hardcode one card for styling -->
                             <div class="card forecast-card">
-                                <p class="day">${date}</p>
-                                <img class="weathers" src="./Img/${imgCode}" alt="${altText}">
+                                <p class="day">${dayName}</p>
+                                <img class="weathers" src="./Img/${imgCode}" alt="${conditionText}">
                                 <p class="temp-high">${maxTemp}°</p>
                                 <p class="temp-low muted-text">${minTemp}°</p>
                             </div>
