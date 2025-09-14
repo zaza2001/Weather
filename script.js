@@ -4,6 +4,7 @@ let currentCity = "Tbilisi";
 const searchForm = document.getElementById("search-form");
 const cityInput = document.getElementById("city-input");
 const cityButtons = document.querySelectorAll("#popular-cities-buttons .btn");
+const dayForecast = document.getElementById("day-forecast");
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const newCity = cityInput.value.trim();
@@ -145,13 +146,17 @@ function renderAditional(data) {
     aditionalDetail.innerHTML = aditonal;
 }
 function getDayName(dateString) {
-   const date = new Date(dateString);
-   return date.toLocaleDateString("en-US", { weekday: 'long' });
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", { weekday: 'long' });
 }
 function renderFiveDayForecast(data) {
     const forecastContainer = document.getElementById("forecast-cards-container");
     forecastContainer.innerHTML = "";
     const forecastDays = data.forecast.forecastday;
+    forecastDays.forEach((day, index) => {
+        dayForecast.textContent = index++ + " - Day Forecast";
+
+    })
     forecastDays.forEach((forecast, index) => {
         const dayName = (index === 0) ? 'Today' : getDayName(forecast.date);
         const maxTemp = forecast.day.maxtemp_c;
