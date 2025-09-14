@@ -154,7 +154,7 @@ function renderFiveDayForecast(data) {
     forecastContainer.innerHTML = "";
     const forecastDays = data.forecast.forecastday;
     forecastDays.forEach((day, index) => {
-        dayForecast.textContent = index++ + " - Day Forecast";
+        dayForecast.textContent = index=index+1 + " - Day Forecast";
 
     })
     forecastDays.forEach((forecast, index) => {
