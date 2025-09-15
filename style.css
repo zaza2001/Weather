@@ -24,31 +24,56 @@
   }
 }
 
+
+
+
 @media (max-width: 480px) {
   .current-temp {
     font-size: 1.6rem;
   }
 
   #search-form {
-    flex-direction: column;
-  }
+  display: flex;
+  margin: 20px;
+  flex-wrap: nowrap; 
+}
 
   .btn-group {
     justify-content: center;
+    margin-left: 5%;
+  }
+  .popularcity{
+    margin-left: 5%;
+  }
+  .fiveday{
+    margin-left: 5%;
+  }
+  .additionaldet{
+    margin-left: 5%;
   }
 
   .forecast-card {
     flex: 1 1 100px;
-    max-width: 120px;
   }
+  .cardd{
+    max-width: 90% !important;
+    max-height: 383px;
+    margin-left: 5%;
+  }
+  
+  .btn-group{
+    max-width: 278px;
+    max-height: 98px;
+  }
+  
 }
+
 
 .cardd {
   max-width: 784px;
   height: 100%;
   height: 383px;
   margin-top: 21px;
-  margin-left: 21px;
   opacity: 1;
   border-radius: var(--radius);
   border: 1px solid var(--border);
@@ -65,6 +90,11 @@
   outline: none;
   border: 1px solid var(--border);
   padding-left: 10px;
+  box-shadow: #1f2937;
+}
+#city-input:focus{
+    border-color: #000; 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); 
 }
 
 #search-form {
@@ -98,7 +128,7 @@
 }
 
 .headCity {
-  width: 221.55px;
+  width: 250.55px;
   max-height: 17px;
   margin: 49px auto 11px auto;
   font-family: "Inter";
@@ -109,7 +139,6 @@
   letter-spacing: 0%;
   text-align: center;
   vertical-align: middle;
-
   color: var(--foreground);
 }
 
@@ -173,7 +202,8 @@
   gap: 72.26px;
   margin-left: 10px;
   margin-top: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  
 }
 
 .detail {
@@ -229,7 +259,7 @@
 }
 
 .details p:last-child {
-  width: 45.59px;
+  width: 50.59px;
   height: 14px;
   font-family: "Inter";
   font-weight: 400;
@@ -247,7 +277,6 @@
   width: 86.91191101074219px;
   height: 17px;
   margin-top: 28px;
-  margin-left: 21px;
   opacity: 1;
   font-family: "Inter";
   font-weight: 400;
@@ -262,8 +291,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-left: 21px;
   margin-top: 18px;
+  justify-content: flex-start;
 }
 
 .btn {
@@ -284,18 +313,24 @@
   vertical-align: middle;
 }
 
-.btn.active {
+.btn:active {
   background: #030213;
   color: #ffffff;
 
 }
-
+.btn:hover {
+  background: #e9ebef;
+  color:black;
+}
+.btn:focus{
+  background: #030213;
+  color: white;
+}
 .fiveday {
-  width: 95px;
+  width: 120px;
   height: 17px;
   opacity: 1;
   margin-top: 21px;
-  margin-left: 21px;
   font-family: "inter";
   font-weight: 400;
   font-style: "regular";
@@ -306,13 +341,30 @@
 }
 
 .grid-5 {
-  display: flex;
+  display: flex ;
   gap: 14px;
   flex-wrap: wrap;
-  margin-left: 21px;
   margin-top: 25px;
+  justify-content: flex-start;
 }
+@media (max-width: 480px) {
+  .grid-5 {
+    flex-direction: column; 
+    align-items: stretch;
+    width: 100%;
+  }.cardd{
+    max-width: 90% !important;
+    max-height: 383px;
+    margin-left: 5%;
+  }
 
+  .forecast-card {
+    
+    width: 90% !important;
+    margin-left: 5%;
+    
+  }
+}
 .forecast-card {
   width: 137.19px;
   height: 195px;
@@ -322,6 +374,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .forecast-card .day {
@@ -375,25 +428,37 @@
 
 }
 
+
 .additionaldet {
   width: 100%;
   max-width: 108px;
   height: 17px;
   opacity: 1;
   margin-top: 28px;
-  margin-left: 21px;
   font-family: "inter";
   font-weight: 400;
   font-style: "regular";
   font-size: 13.02px;
 }
+@media (max-width: 480px) {
+ .detail-card {
+    
+    width: 40% !important;  
+    max-width: 100% !important;
+    margin-left: 5%;
+  }
+  
+}
+
+
+
 
 #additional-details-container {
   display: flex;
   gap: 14px;
   margin-top: 15px;
-  margin-left: 21px;
   flex-wrap: wrap;
+  
 }
 
 

@@ -28,14 +28,14 @@
             <div id="weather-content">
                 <!-- Current Weather & Search Card -->
                 <section class="cardd">
-                    <form id="search-form">
-                        <input id="city-input" type="text" placeholder="Enter city name...">
-                        <button type="submit" class="searchBtn"><img src="./Img/search.svg"
+                    <form class="search-container" id="search-form">
+                        <input id="city-input"   type="text" placeholder="Enter city name...">
+                        <button type="submit" class="searchBtn" id="searchBtn"><img src="./Img/search.svg"
                                 alt="search icon">Search</button>
                     </form>
                     <!-- Hardcoded placeholder data for styling -->
                     <div id="current-weather-details">
-                        <h1 class="headCity">New York, United States of America</h1>
+                        <h1 class="headCity" id="headCity">New York, United States of America</h1>
                         <p class="muted-text">Saturday, August 16, 2025</p>
                         <div class="current-main">
                             <div class="current-temp">
@@ -67,9 +67,9 @@
                     <h3 class="popularcity">Popular Cities</h3>
                     <div id="popular-cities-buttons" class="btn-group">
                         <!-- Hardcode a few buttons for styling -->
-                        <button class="btn btn-outline active">New York</button>
-                        <button class="btn btn-outline">London</button>
-                        <button class="btn btn-outline">Tokyo</button>
+                        <button id="popularuli" value="New York" class="btn btn-outline">New York</button>
+                        <button id="popularuli" value="London" class="btn btn-outline">London</button>
+                        <button id="popularuli" class="btn btn-outline">Tokyo</button>
                         <button class="btn btn-outline">Paris</button>
                         <button class="btn btn-outline">Sydney</button>
                         <button class="btn btn-outline">Los Angeles</button>
@@ -83,7 +83,7 @@
 
                 <!-- 5-Day Forecast -->
                 <section>
-                    <h2 class="fiveday">5-Day Forecast</h2>
+                    <h2 id="day-forecast" class="fiveday">5-Day Forecast</h2>
                     <div id="forecast-cards-container" class="grid-5">
                         <!-- Hardcode one card for styling -->
                         <div class="card forecast-card">
