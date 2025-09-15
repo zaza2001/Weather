@@ -40,22 +40,40 @@
 
   .btn-group {
     justify-content: center;
+    margin-left: 5%;
+  }
+  .popularcity{
+    margin-left: 5%;
+  }
+  .fiveday{
+    margin-left: 5%;
+  }
+  .additionaldet{
+    margin-left: 5%;
   }
 
   .forecast-card {
     flex: 1 1 100px;
-    max-width: 120px;
   }
+  .cardd{
+    max-width: 90% !important;
+    max-height: 383px;
+    margin-left: 5%;
+  }
+  
+  .btn-group{
+    max-width: 278px;
+    max-height: 98px;
+  }
+  
 }
-#current-weather-details{
-justify-content: center;
-}
+
+
 .cardd {
   max-width: 784px;
   height: 100%;
   height: 383px;
   margin-top: 21px;
-  margin-left: 21px;
   opacity: 1;
   border-radius: var(--radius);
   border: 1px solid var(--border);
@@ -176,17 +194,14 @@ justify-content: center;
   ;
   margin: 25px auto;
 }
-@media (max-width: 10px) {
-  .current-details {
-    align-items: center;
-  }
-}
+
 .current-details {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 41.62px;
-  margin: 20px auto 0 auto;
+  gap: 72.26px;
+  margin-left: 10px;
+  margin-top: 20px;
   flex-wrap: nowrap;
   
 }
@@ -197,6 +212,7 @@ justify-content: center;
   gap: 10.5px;
   font-family: 'Inter', sans-serif;
   color: #0A0A0A;
+  margin-left: 20px;
 }
 
 .details {
@@ -261,7 +277,6 @@ justify-content: center;
   width: 86.91191101074219px;
   height: 17px;
   margin-top: 28px;
-  margin-left: 21px;
   opacity: 1;
   font-family: "Inter";
   font-weight: 400;
@@ -276,7 +291,6 @@ justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-left: 21px;
   margin-top: 18px;
   justify-content: flex-start;
 }
@@ -317,7 +331,6 @@ justify-content: center;
   height: 17px;
   opacity: 1;
   margin-top: 21px;
-  margin-left: 21px;
   font-family: "inter";
   font-weight: 400;
   font-style: "regular";
@@ -331,7 +344,6 @@ justify-content: center;
   display: flex ;
   gap: 14px;
   flex-wrap: wrap;
-  margin-left: 21px;
   margin-top: 25px;
   justify-content: flex-start;
 }
@@ -339,12 +351,18 @@ justify-content: center;
   .grid-5 {
     flex-direction: column; 
     align-items: stretch;
+    width: 100%;
+  }.cardd{
+    max-width: 90% !important;
+    max-height: 383px;
+    margin-left: 5%;
   }
 
   .forecast-card {
-    width: 100% !important;  
-    max-width: 100% !important;
-  
+    
+    width: 90% !important;
+    margin-left: 5%;
+    
   }
 }
 .forecast-card {
@@ -417,7 +435,6 @@ justify-content: center;
   height: 17px;
   opacity: 1;
   margin-top: 28px;
-  margin-left: 21px;
   font-family: "inter";
   font-weight: 400;
   font-style: "regular";
@@ -425,16 +442,21 @@ justify-content: center;
 }
 @media (max-width: 480px) {
  .detail-card {
-    max-width: 132px !important;
-    max-height: 72px !important;
+    
+    width: 40% !important;  
+    max-width: 100% !important;
+    margin-left: 5%;
   }
+  
 }
+
+
+
 
 #additional-details-container {
   display: flex;
   gap: 14px;
   margin-top: 15px;
-  margin-left: 9px;
   flex-wrap: wrap;
   
 }
