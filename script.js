@@ -159,8 +159,8 @@ function renderFiveDayForecast(data) {
     })
     forecastDays.forEach((forecast, index) => {
         const dayName = (index === 0) ? 'Today' : getDayName(forecast.date);
-        const maxTemp = forecast.day.maxtemp_c;
-        const minTemp = forecast.day.mintemp_c;
+        const maxTemp = Math.floor(forecast.day.maxtemp_c);
+        const minTemp = Math.floor(forecast.day.mintemp_c);
         const code = forecast.day.condition.code;
         const imgCode = conditionCodeToIconMap[code];
         const conditionText = conditionCodeToTextMap[code];
